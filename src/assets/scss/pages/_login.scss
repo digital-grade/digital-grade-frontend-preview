@@ -1,0 +1,105 @@
+.login {
+  background-image: url(../images/background-login.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  &-card {
+    width: 1200px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: $color-white;
+    text-align: center;
+    line-height: 1;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(2px);
+    -webkit-box-shadow: 3px 3px 5px 6px $shadow-color;
+    -moz-box-shadow: 3px 3px 5px 6px $shadow-color;
+    box-shadow: 3px 3px 5px 6px $shadow-color;
+
+    &__company {      
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-secondary-light),
+        url(../images/background-login-company.jpg);
+      background-size: cover;
+      background-position: top;
+      position: relative;
+      height: 99.5%;
+      border-radius: 20px 0 0 20px;
+      
+      &_image {
+        width: 300px;
+        padding-top: 20%;
+      }
+  
+      &_paragraph {
+        padding: 20px;
+        text-align: center;
+        color: $color-white;
+      }
+    }
+
+    &__form {
+      padding: 19% 0;
+      
+      &_title {
+        font-size: 30px;
+        color: $color-text-1;
+        font-weight: bold !important;
+      }
+      
+      &_subtitle {
+        padding-top: 15px;
+        font-size: 18px;
+        color: $color-text-2;
+        margin-bottom: 20px;
+      }
+      
+      .field {
+        width: 82.5%;
+        padding-left: 102px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+      }
+
+      &_input > .input {
+        background-color: $color-background-input;
+        color: $color-text-2;
+        border-radius: 20px;
+  
+        &[type=text] {
+          padding: 0 30px;
+        }
+        
+        &[type=password] {
+          padding: 0 30px;
+        }
+      }
+
+      &_button {
+        color: $color-white !important;
+        width: 65%;
+        margin-top: 30px;
+        border-radius: 20px !important;
+
+        & > span {
+          font-size: 20px;
+        }
+      }
+
+      &_forgot {
+        margin-top: 5px;
+
+        & > a {
+          font-size: 14px;
+          color: $color-black;
+        }
+      }
+    }
+  }
+}

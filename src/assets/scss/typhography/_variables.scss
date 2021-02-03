@@ -1,0 +1,69 @@
+// Resolution Monitor
+$xtra-small-res: 320px;
+$small-res: 576px;
+$medium-res: 768px;
+$large-res: 1024px;
+$extra-large-res: 1200px;
+$xtra-large-res: 1366px;
+$xxtra-large-res: 1920px;
+$xxxtra-large-res: 2560px;
+
+// Color Variables
+$color-white: #ffffff;
+$color-black: #000000;
+$color-primary: #036C72;
+$color-primary-invert: findColorInvert($color-primary);
+$color-primary-light: #036C72dd;
+$color-secondary: #08C2CC;
+$color-secondary-light: #08C2CC77;
+$color-text-1: #707070;
+$color-text-2: #9C9A9A;
+$color-text-3: #060606;
+$color-required: #ff0000;
+$color-background-input: #DBDBDB;
+$color-background-content: #D6D6D6;
+
+$shadow-color: #00000029;
+
+$color-success: #4EC776;
+$color-success-invert: findColorInvert($color-success);
+$color-navbar: #04848A;
+$color-navbar-invert: findColorInvert($color-navbar);
+$color-sidebar: #13939C;
+$color-sidebar-invert: findColorInvert($color-sidebar);
+$color-danger: #ff1414;
+$color-danger-invert: findColorInvert($color-danger);
+
+$colors: (
+  'white': (
+    $color-white,
+    $color-black,
+  ),
+  'black': (
+    $color-black,
+    $color-white,
+  ),
+  'primary': (
+    $color-primary,
+    $color-white,
+    $color-primary-invert,
+  ),
+  'success': (
+    $color-success,
+    $color-white,
+    $color-success-invert,
+  ),
+  'navbar': (
+    $color-navbar,
+    $color-navbar-invert,
+  ),
+  'sidebar': (
+    $color-sidebar,
+    $color-sidebar-invert,
+  ),
+  'danger': (
+    $color-danger,
+    $color-white,
+    $color-danger-invert,
+  ),
+)
