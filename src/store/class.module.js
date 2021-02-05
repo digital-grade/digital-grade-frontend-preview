@@ -4,13 +4,13 @@ const classes = {
   namespaced: true,
   state: () => ({
     errors: null,
-    Class: null,
+    class: null,
     isLoading: false,
   }),
   getters: {
     // For get classes
     getClasses(state) {
-      return state.Class
+      return state.class
     }
   },
   actions: {
@@ -136,7 +136,7 @@ const classes = {
 
     // For set Class
     setClass(state, data) {
-      state.Class = data
+      state.class = data
     },
   }
 }

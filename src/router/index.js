@@ -28,6 +28,9 @@ import Schedule from '@/views/Schedule/IndexSchedule'
 import SchedulePreviewTeacher from '@/views/Schedule/IndexSchedulePreviewTeacher'
 import FormSchedule from '@/views/Schedule/FormSchedule'
 
+// For Grade
+import Grade from '@/views/Grade/FormGrade'
+
 // For profile
 import Profile from '@/views/Profile/Profile'
 
@@ -86,6 +89,11 @@ const routes = [
         name: 'Teacher.Preview.Schedule',
         component: SchedulePreviewTeacher,
       },
+      {
+        path: '/teacher/preview/schedule/:nip/list/:scheduleId',
+        name: 'Teacher.Preview.Schedule.Grade',
+        component: Grade,
+      },
       /** End For Teacher */
 
       /** For Student */
@@ -103,6 +111,21 @@ const routes = [
         path: '/student/edit/:nis',
         name: 'Student.Edit',
         component: FormStudent,
+      },
+      {
+        path: '/student/preview/:nis',
+        name: 'Student.Preview',
+        component: Dashboard,
+      },
+      {
+        path: '/student/preview/schedule/:nip',
+        name: 'Student.Preview.Schedule',
+        component: SchedulePreviewTeacher,
+      },
+      {
+        path: '/student/preview/schedule/:nip',
+        name: 'Student.Preview.Class',
+        component: SchedulePreviewTeacher,
       },
       /** End For Student */
 
