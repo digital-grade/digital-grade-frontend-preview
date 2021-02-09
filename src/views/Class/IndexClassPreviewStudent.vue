@@ -1,8 +1,8 @@
 <template>
   <div class="content">
     <b-field grouped position="is-left">
-      <b-icon icon="calendar-alt" custom-size="3x" class="content-icon"></b-icon>
-      <h1 class="content-title">Schedules</h1>
+      <b-icon icon="graduation-cap" custom-size="3x" class="content-icon"></b-icon>
+      <h1 class="content-title">Class</h1>
     </b-field>
 
     <template v-if="!isLoading">
@@ -29,11 +29,11 @@
 
       <b-table
         v-if="!isLoading"
-        :data="schedules && schedules.data ? schedules.data : []"
+        :data="classes && classes.data ? classes.data : []"
         :current-page.sync="currentPage"
         paginated
         backend-pagination
-        :total="schedules.meta && schedules.meta.total ? schedules.meta.total : 0"
+        :total="classes.meta && classes.meta.total ? classes.meta.total : 0"
         :per-page="perPage"
         @page-change="onPageChange"
         aria-next-label="Next page"
@@ -50,80 +50,24 @@
         <b-table-column
           field="no"
           label="No"
+          sortable
           v-slot="props"
           width="1%"
         >
-          {{ props.index + schedules.meta.from }}
+          <span class="table-full-name">
+            {{ props.index + classes.meta.from }}
+          </span>
         </b-table-column>
 
-        <!-- For class -->
+        <!-- For name -->
         <b-table-column
-          field="class"
-          label="Class"
+          field="name"
+          label="Name"
+          sortable
           v-slot="props"
-          width="5%"
+          width="40%"
         >
-          {{ props.row.class }}
-        </b-table-column>
-
-        <!-- For course -->
-        <b-table-column
-          field="course"
-          label="Course"
-          v-slot="props"
-          width="10%"
-        >
-          {{ props.row.course }}
-        </b-table-column>
-
-        <!-- For School Year -->
-        <b-table-column
-          field="school_year"
-          label="School Year"
-          v-slot="props"
-          width="10%"
-        >
-          {{ props.row.schoolYear }}
-        </b-table-column>
-
-        <!-- For day -->
-        <b-table-column
-          field="day"
-          label="Day"
-          v-slot="props"
-          width="10%"
-        >
-          <template v-if="props.row.day == 'monday'">
-            Monday
-          </template>
-          <template v-else-if="props.row.day == 'tuesday'">
-            Tuesday
-          </template>
-          <template v-else-if="props.row.day == 'wednesday'">
-            Wednesday
-          </template>
-          <template v-else-if="props.row.day == 'thursday'">
-            Thursday
-          </template>
-          <template v-else-if="props.row.day == 'friday'">
-            Friday
-          </template>
-          <template v-else-if="props.row.day == 'saturday'">
-            Saturday
-          </template>
-          <template v-else-if="props.row.day == 'sunday'">
-            Sunday
-          </template>
-        </b-table-column>
-
-        <!-- For date of birth -->
-        <b-table-column
-          field="start_time"
-          label="Schedule"
-          v-slot="props"
-          width="10%"
-        >
-          {{ props.row.startTime }} - {{ props.row.endTime }}
+          {{ props.row.name }}
         </b-table-column>
 
         <!-- For action -->
@@ -132,10 +76,12 @@
           v-slot="props"
           width="10%"
         >
-          <router-link :to="'/teacher/preview/schedule/' + $route.params.nip + '/list/' + props.row.id">
+          <!-- For detail class -->
+          <router-link :to="'/student/preview/class/' + $route.params.nis + '/schedule/' + props.row.id">
             <b-button
               type="is-primary is-small has-text-weight-bold"
-              icon-left="list"
+              title="Schedule"
+              icon-left="clock"
             ></b-button>
           </router-link>
         </b-table-column>
@@ -154,7 +100,7 @@ import Loading from "@/components/Loading";
 import debounce from 'lodash/debounce'
 
 export default {
-  name: 'schedule',
+  name: 'student',
   components: {
     Loading,
   },
@@ -181,11 +127,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      schedules: "schedule/getSchedules",
+      classes: "classes/getClasses",
     }),
   },
   async created() {
-    await this.loadSchedules(
+    await this.loadClasses(
       this.perPage,
       this.page,
       this.sortField,
@@ -196,15 +142,14 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchSchedules: 'schedule/fetchSchedulesByNip',
-      deleteScheduleData: 'schedule/deleteSchedule',
+      fetchClasses: 'classes/fetchClassesByStudent',
     }),
 
-    // For search schedule
-    searchSchedule: debounce(function(value) {
+    // For search class
+    searchClass: debounce(function(value) {
       if (value) {
         this.search = value
-        this.loadSchedules(
+        this.loadClasses(
           this.perPage,
           this.page,
           this.sortField,
@@ -213,7 +158,7 @@ export default {
         )
       } else {
         this.search = null
-        this.loadSchedules(
+        this.loadClasses(
           this.perPage,
           this.page,
           this.sortField,
@@ -223,8 +168,8 @@ export default {
       }
     }, 500),
 
-    // For load schedules
-    async loadSchedules(
+    // For load classes
+    async loadClasses(
       perPage,
       page,
       sortField,
@@ -239,12 +184,12 @@ export default {
         sortOrder: sortOrder,
         search: search,
         status: status,
-        nip: this.$route.params.nip,
+        nis: this.$route.params.nis,
       }
 
       this.isLoading = true
       try {
-        await this.fetchSchedules(data)
+        await this.fetchClasses(data)
       } catch (err) {
         showToast(err, 'is-danger', 'is-bottom')
       }
@@ -255,7 +200,7 @@ export default {
     onPageChange(page) {
       this.currentPage = page
       this.page = page
-      this.loadSchedules(
+      this.loadClasses(
         this.perPage,
         this.page,
         this.sortField,
@@ -269,7 +214,7 @@ export default {
     onSort(field, order) {
       this.sortField = field
       this.sortOrder = order
-      this.loadSchedules(
+      this.loadClasses(
         this.perPage,
         this.page,
         this.sortField,
@@ -282,7 +227,7 @@ export default {
     // For per page change
     onPerPageChange(value) {
       this.perPage = value
-      this.loadSchedules(
+      this.loadClasses(
         this.perPage,
         this.page,
         this.sortField,
@@ -294,7 +239,7 @@ export default {
   },
   watch: {
     search: function(val) {
-      this.searchSchedule(val)
+      this.searchClass(val)
     },
   },
 };

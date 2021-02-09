@@ -127,7 +127,6 @@
 
         <!-- For action -->
         <b-table-column label="Action" v-slot="props" width="15%">
-
           <!-- For Login as Teacher -->
           <router-link :to="'/teacher/preview/' + props.row.nip" target="_blank">
             <b-button

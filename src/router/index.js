@@ -22,10 +22,13 @@ import FormCourse from '@/views/Course/FormCourse'
 // For Class
 import Class from '@/views/Class/IndexClass'
 import FormClass from '@/views/Class/FormClass'
+import DetailClassPreviewStudent from '@/views/Class/DetailClassPreviewStudent'
+import ClassPreviewStudent from '@/views/Class/IndexClassPreviewStudent'
 
 // For Schedule
 import Schedule from '@/views/Schedule/IndexSchedule'
 import SchedulePreviewTeacher from '@/views/Schedule/IndexSchedulePreviewTeacher'
+// import SchedulePreviewStudent from '@/views/Schedule/IndexSchedulePreviewStudent'
 import FormSchedule from '@/views/Schedule/FormSchedule'
 
 // For Grade
@@ -117,15 +120,20 @@ const routes = [
         name: 'Student.Preview',
         component: Dashboard,
       },
+      // {
+      //   path: '/student/preview/schedule/:nis',
+      //   name: 'Student.Preview.Schedule',
+      //   component: SchedulePreviewStudent,
+      // },
       {
-        path: '/student/preview/schedule/:nip',
-        name: 'Student.Preview.Schedule',
-        component: SchedulePreviewTeacher,
+        path: '/student/preview/class/:nis',
+        name: 'Student.Preview.Class',
+        component: ClassPreviewStudent,
       },
       {
-        path: '/student/preview/schedule/:nip',
-        name: 'Student.Preview.Class',
-        component: SchedulePreviewTeacher,
+        path: '/student/preview/class/:nis/schedule/:classId',
+        name: 'Student.Preview.Class.Schedule',
+        component: DetailClassPreviewStudent,
       },
       /** End For Student */
 

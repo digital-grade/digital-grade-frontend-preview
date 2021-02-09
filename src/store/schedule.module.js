@@ -70,6 +70,35 @@ const schedule = {
       })
     },
 
+    // For get schedules by class
+    fetchSchedulesByClass(context, content) {
+      return new Promise((resolve, reject) => {
+        ApiService.init()
+        context.commit('setLoading', true)
+        ApiService.get(`/api/schedule/${content.classId}/get-schedule-by-class`, {
+          perPage: content.perPage,
+          page: content.page,
+          sortField: content.sortField,
+          sortOrder: content.sortOrder,
+          search: content.search,
+          status: content.status,
+          semester: content.semester,
+        }).then(
+          response => {
+            if (response.status === 200) {
+              context.commit('setSchedules', response.data)
+              context.commit('setLoading', false)
+              resolve(response)
+            }
+          },
+          error => {
+            context.commit('setLoading', false)
+            reject(error)
+          }
+        )
+      })
+    },
+
     // For fetch schedule by id
     fetchSchedule(context, id) {
       return new Promise((resolve, reject) => {

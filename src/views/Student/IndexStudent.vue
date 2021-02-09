@@ -143,12 +143,23 @@
           v-slot="props"
           width="10%"
         >
+          <!-- For Login as Student -->
+          <router-link :to="'/student/preview/' + props.row.nis" target="_blank">
+            <b-button
+              type="is-primary is-small has-text-weight-bold"
+              icon-left="eye"
+              title="Login as student"
+            ></b-button>
+          </router-link>
+
           <router-link :to="'/student/edit/' + props.row.nis">
             <b-button
+              style="margin-left: 10px"
               type="is-primary is-small has-text-weight-bold"
               icon-left="edit"
             ></b-button>
           </router-link>
+
           <b-button
             style="margin-left: 10px"
             type="is-danger is-small has-text-weight-bold"

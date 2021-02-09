@@ -70,7 +70,7 @@ export default {
     this.course = responseSchedule.data.course.name
     this.classes = responseSchedule.data.class.name
 
-    const responseGrade = await this.fetchGradesByClass(this.$route.params.scheduleId);
+    const responseGrade = await this.fetchGradesBySchedule(this.$route.params.scheduleId);
 
     let gradeData = []
     responseGrade.data.map(grade => {
@@ -93,8 +93,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchGradesByClass: "grade/fetchGradesByClass",
-      saveGradesByClass: "grade/saveGradesByClass",
+      fetchGradesBySchedule: "grade/fetchGradesBySchedule",
+      saveGradesBySchedule: "grade/saveGradesBySchedule",
       fetchSchedule: "schedule/fetchSchedule",
     }),
     async onSaveClicked() {
@@ -104,13 +104,13 @@ export default {
       }
 
       try {
-        await this.saveGradesByClass(data)
+        await this.saveGradesBySchedule(data)
 
         showToast('Save Grade Success', 'is-success', 'is-bottom')
 
         this.$router.push({ name: "Teacher.Preview.Schedule" })
       } catch (err) {
-        showToast(err.response.data.message, 'is-danger', 'is-bottom')
+        showToast(err, 'is-danger', 'is-bottom')
       }
     },
   },
