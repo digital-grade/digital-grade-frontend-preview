@@ -13,21 +13,6 @@
             <b-menu-list class="sidebar-list">
               <!-- For login as a teacher -->
               <template v-if="$route.name.search('Teacher.Preview') >= 0">
-                <!-- For Profile -->
-                <b-menu-item
-                  class="sidebar-item"
-                  tag="router-link"
-                  :to="'/teacher/preview/' + $route.params.nip"
-                  target="_self"
-                  :active="this.$route.path === '/teacher/preview/' + $route.params.nip"
-                >
-                  <template slot="label">
-                    <b-icon icon="user"></b-icon>
-                    <span class="sidebar-item__text"> Profile </span>
-                  </template>
-                </b-menu-item>
-                <!-- End For Profile -->
-
                 <!-- For Schedule -->
                 <b-menu-item
                   class="sidebar-item"
@@ -46,21 +31,6 @@
 
               <!-- For login as a student -->
               <template v-else-if="$route.name.search('Student.Preview') >= 0">
-                <!-- For Profile -->
-                <b-menu-item
-                  class="sidebar-item"
-                  tag="router-link"
-                  :to="'/student/preview/' + $route.params.nis"
-                  target="_self"
-                  :active="this.$route.path === '/student/preview/' + $route.params.nis"
-                >
-                  <template slot="label">
-                    <b-icon icon="user"></b-icon>
-                    <span class="sidebar-item__text"> Profile </span>
-                  </template>
-                </b-menu-item>
-                <!-- End For Profile -->
-
                 <!-- For Class -->
                 <b-menu-item
                   class="sidebar-item"
@@ -75,40 +45,10 @@
                   </template>
                 </b-menu-item>
                 <!-- End For Schedule -->
-
-                <!-- For Schedule -->
-                <!-- <b-menu-item
-                  class="sidebar-item"
-                  tag="router-link"
-                  :to="'/student/preview/schedule/' + $route.params.nis"
-                  target="_self"
-                  :active="this.$route.path.includes('/student/preview/schedule/' + $route.params.nis)"
-                >
-                  <template slot="label">
-                    <b-icon icon="calendar-alt"></b-icon>
-                    <span class="sidebar-item__text"> Schedule </span>
-                  </template>
-                </b-menu-item> -->
-                <!-- End For Schedule -->
               </template>
 
               <!-- For login as an admin -->
               <template v-else>
-                <!-- For Profile -->
-                <b-menu-item
-                  class="sidebar-item"
-                  tag="router-link"
-                  to="/profile"
-                  target="_self"
-                  :active="this.$route.path === '/profile'"
-                >
-                  <template slot="label">
-                    <b-icon icon="user"></b-icon>
-                    <span class="sidebar-item__text"> Profile </span>
-                  </template>
-                </b-menu-item>
-                <!-- End For Profile -->
-                
                 <!-- For Teacher -->
                 <b-menu-item
                   class="sidebar-item"

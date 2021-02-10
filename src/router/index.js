@@ -34,9 +34,6 @@ import FormSchedule from '@/views/Schedule/FormSchedule'
 // For Grade
 import Grade from '@/views/Grade/FormGrade'
 
-// For profile
-import Profile from '@/views/Profile/Profile'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -52,14 +49,6 @@ const routes = [
         component: Dashboard,
       },
       /** End For Dashboard */
-
-      /** For Profile */
-      {
-        path: '/profile',
-        name: 'Profile',
-        component: Profile,
-      },
-      /** End For Profile */
 
       /** For Teacher */
       {
@@ -80,11 +69,6 @@ const routes = [
       {
         path: '/teacher/preview/:nip',
         name: 'Teacher.Preview',
-        component: Dashboard,
-      },
-      {
-        path: '/teacher/preview/profile/:nip',
-        name: 'Teacher.Preview.Profile',
         component: Dashboard,
       },
       {

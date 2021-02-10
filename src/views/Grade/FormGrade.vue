@@ -11,7 +11,8 @@
     <template v-if="!isLoading">
       <div class="level table-search">
         <div class="level-left">
-          <h2>{{ course }} - {{ classes }}</h2>
+          <h2>Course: {{ course }}</h2>
+          <h2>Class: {{ classes }}</h2>
         </div>
         <div class="level-right">
           <b-button type="is-primary" @click="onSaveClicked">Save</b-button>
