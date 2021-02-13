@@ -25,10 +25,12 @@ import FormClass from '@/views/Class/FormClass'
 import DetailClassPreviewStudent from '@/views/Class/DetailClassPreviewStudent'
 import ClassPreviewStudent from '@/views/Class/IndexClassPreviewStudent'
 
+// For School Year
+import SchoolYear from '@/views/SchoolYear/IndexSchoolYear'
+
 // For Schedule
 import Schedule from '@/views/Schedule/IndexSchedule'
 import SchedulePreviewTeacher from '@/views/Schedule/IndexSchedulePreviewTeacher'
-// import SchedulePreviewStudent from '@/views/Schedule/IndexSchedulePreviewStudent'
 import FormSchedule from '@/views/Schedule/FormSchedule'
 
 // For Grade
@@ -156,6 +158,14 @@ const routes = [
         component: FormClass,
       },
       /** End For Class */
+
+      /** For School Year */
+      {
+        path: '/school-year',
+        name: 'SchoolYear.Index',
+        component: SchoolYear,
+      },
+      /** End For School Year */
 
       /** For Schedule */
       {

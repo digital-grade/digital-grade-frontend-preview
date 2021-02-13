@@ -109,6 +109,21 @@
                 </b-menu-item>
                 <!-- End For Class -->
 
+                <!-- For School Year -->
+                <b-menu-item
+                  class="sidebar-item"
+                  tag="router-link"
+                  to="/school-year"
+                  target="_self"
+                  :active="this.$route.path.includes('/school-year')"
+                >
+                  <template slot="label">
+                    <b-icon icon="calendar-alt"></b-icon>
+                    <span class="sidebar-item__text"> School Year </span>
+                  </template>
+                </b-menu-item>
+                <!-- End For School Year -->
+
                 <!-- For Schedule -->
                 <b-menu-item
                   class="sidebar-item"

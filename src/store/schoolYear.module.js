@@ -74,40 +74,6 @@ const schoolYear = {
       })
     },
 
-    // For update school year
-    updateSchoolYear(context, form) {
-      return new Promise((resolve, reject) => {
-        context.commit('setLoading', true)
-        ApiService.init()
-        ApiService.put(`/api/school-year/${form.id}/update`, form, true).then(
-          response => {
-            context.commit('setLoading', false)
-            resolve(response)
-          },
-          error => {
-            reject(error)
-          }
-        )
-      })
-    },
-
-    // For delete school year
-    deleteSchoolYear(context, id) {
-      return new Promise((resolve, reject) => {
-        context.commit('setLoading', true)
-        ApiService.init()
-        ApiService.delete(`/api/school-year/${id}/delete`, {}, true).then(
-          response => {
-            context.commit('setLoading', false)
-            resolve(response)
-          },
-          error => {
-            reject(error)
-          }
-        )
-      })
-    },
-
     // For get school year
     getSchoolYear() {
       return new Promise((resolve, reject) => {
