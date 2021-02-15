@@ -132,7 +132,7 @@
               </div>
             </ValidationProvider>
           </div>
-          <!-- End for day -->
+          <!-- End for school year -->
 
           <!-- For day -->
           <div class="column is-3 key">Day <span class="required">*</span></div>

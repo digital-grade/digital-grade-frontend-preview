@@ -12,7 +12,13 @@
 
         <br />
         <br />
-        Situs ini merupakan situs untuk penilaian data siswa yang ada di sekolah ini. 
+        Berisi segala informasi agar akademik dapat dilakukan dengan baik
+        <ul>
+          <li>Informasi Murid</li>
+          <li>Informasi Guru</li>
+          <li>Jadwal Pelajaran</li>
+          <li>Penilaian</li>
+        </ul>
       </div>
     </div>
   </div>
